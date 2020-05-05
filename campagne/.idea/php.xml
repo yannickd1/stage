@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/admin/vendor/mailjet/mailjet-apiv3-php" />
+      <path value="$PROJECT_DIR$/admin/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/admin/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/admin/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/admin/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/admin/vendor/phpmailer/phpmailer" />
+      <path value="$PROJECT_DIR$/admin/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/admin/vendor/composer" />
+    </include_path>
+  </component>
+</project>

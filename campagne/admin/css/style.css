@@ -1,0 +1,451 @@
+@media(min-width: 768px) and (max-width: 1388px) {
+    #global
+    {  width :100% ;
+        padding :0px ;
+    }
+    #menu-gauche
+    {
+        width :100% ;
+    }
+    #contenu{
+        width :80% ;
+    }
+
+}
+
+
+@font-face {
+    font-family: 'texta-boldit';
+    src: url('../fonts/texta_bold_italic-webfont.woff2') format('woff2'), url('../fonts/texta_bold_italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'texta-light';
+    src: url('../fonts/texta_light-webfont.woff2') format('woff2'), url('../fonts/texta_light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'texta-thintit';
+    src: url('../fonts/texta_thin_italic-webfont.woff2') format('woff2'), url('../fonts/texta_thin_italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'texta-light';
+}
+
+body {
+    background-color: white;
+    width: 600px;
+    margin: 0 auto;
+}
+
+.container {
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    /*background-image: url(../img/bg.png);*/
+    /*height: 2957px;*/
+}
+/* Début CSS generateur landing page*/
+#drag-1,
+#drag-2 {
+    /*width: 600px;*/
+    /*height: 200px;*/
+    /*min-height: 6.5em;*/
+    /*margin: 10%;*/
+    /*background-color: transparent;*/
+    /*color: transparent;*/
+    /*border: 1px solid black;*/
+    /*border-radius: 0.75em;*/
+    /*padding: 4%;*/
+    /*user-select: none;*/
+    -webkit-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    margin-left: 31px;
+}
+
+.thumbnail {
+    background-color: turquoise;
+    width: 700px;
+}
+
+.ajouter {
+    position: sticky;
+    top: 0;
+    /* padding: 50px; */
+    z-index: 1;
+}
+
+.majPos {
+    position: sticky;
+    top: 0;
+    /* padding: 50px; */
+    z-index: 1;
+}
+
+.suppr {
+    position: absolute;
+    margin-left: 30px;
+    background-color: unset;
+    border: none;
+}
+
+.modif {
+    position: absolute;
+}
+
+#confirmation {
+    background-color: green;
+    /* height: fit-content; */
+    width: fit-content;
+    text-align: center;
+    color: white;
+    font-family: 'texta-boldit';
+    border: 1px solid;
+    position: absolute;
+    z-index: 1;
+    width: 350px;
+    position: sticky;
+    top: 50px;
+    /* text-align: center; */
+    margin: 0 auto;
+    font-family: 'texta-boldit';
+}
+
+#menu{
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    /* margin: 0 auto; */
+    text-align: center;
+    display: flex;
+    margin-left: -129px;
+}
+
+
+
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+
+
+/* Fin CSS generateur landing page*/
+
+
+
+.formu {
+    width: 400px;
+    /* border: 1px solid #33517b; */
+    text-align: center;
+    /*border-radius: 15px;*/
+    background-color: white;
+}
+
+input {
+    text-align: center;
+}
+
+.form {
+    color: white;
+    width: 250px;
+    margin: 0 auto;
+}
+
+.formInp {
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #33517b;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    /* border-radius: 150px; */
+}
+
+.formSubmit {
+    padding: 0.9rem 3.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: white;
+    background-color: #33517b;
+    background-clip: padding-box;
+    border: 1px solid #7b333300;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    border-radius: 200px;
+}
+
+.champs {
+    color: white;
+}
+
+h1 {
+    font-family: 'texta-boldit';
+}
+
+* Center the image and position the close button */
+/* The Modal (background) */
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    outline: 0;
+    background-color: rgba(0, 0, 0, 0.38);
+}
+
+#modal-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    outline: 0;
+    background-color: rgba(0, 0, 0, 0.38);
+}
+
+
+/* Modal Content Box */
+
+.modal-content {
+    background-color: rgba(0, 0, 0, 0);
+    margin: 0 auto;
+    width: 400px;
+    margin-top: 80px;
+    border-radius: 15px;
+}
+
+
+/* The Close Button (x) */
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+    margin-top: -40px;
+    margin-right: -56px;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+
+/* Add Zoom Animation */
+
+.animate {
+    animation: zoom 0.6s;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+.contact {
+    color: white;
+    background-color: #33517b;
+    height: 87px;
+    padding-top: 20px;
+}
+
+label {
+    color: #33517b;
+    display: inline;
+}
+
+.comments {
+    font-style: italic;
+    font-size: 15px;
+    color: #d82c2e;
+    height: 0px;
+}
+
+.rappel {
+    display: inline-block;
+}
+
+#nom {
+    background-image: url('../img/svg/user.svg');
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+}
+
+#email {
+    background-image: url('../img/svg/email.svg');
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+}
+
+#tel {
+    background-image: url('../img/svg/smartphone.svg');
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+}
+
+#submit {
+    background-image: url(../img/svg/paper-plane.svg);
+    background-repeat: no-repeat;
+    background-size: 35px;
+    background-position-x: 116px;
+    background-position-y: 8px;
+    -webkit-box-shadow: 10px 10px 35px -3px rgba(51, 81, 123, 1);
+    -moz-box-shadow: 10px 10px 35px -3px rgba(51, 81, 123, 1);
+    box-shadow: 10px 10px 35px -3px rgba(51, 81, 123, 1);
+    margin-top: 8px;
+}
+
+#submit:hover {
+    background-image: url('../img/svg/paper-plane.svg');
+    background-repeat: no-repeat;
+    background-size: 35px;
+    color: rgba(0, 0, 0, 0);
+    background-position: center;
+}
+
+.droits {
+    font-size: small;
+    font-family: 'texta-thintit';
+    color: #33517b;
+}
+
+.soumettre {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: smaller;
+    display: unset;
+}
+
+
+#loader{
+    display: none;
+    width:35px;
+    height:35px;
+    background: url("../img/Rolling-1s-200px.gif");
+    background-size: contain;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/************** Login **************/
+
+body{
+
+}
+#containerLogin{
+    width:400px;
+    margin:0 auto;
+    margin-top:10%;
+}
+/* Bordered form */
+#formLogin {
+    width:100%;
+    padding: 30px;
+    border: 1px solid #f1f1f1;
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+#containerLogin h1{
+    width: 38%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+/* Full-width inputs */
+.inputLogin{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+.inputLoginSubmit {
+    background-color: #53af57;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.inputLoginSubmit:hover {
+    background-color: white;
+    color: #53af57;
+    border: 1px solid #53af57;
+}
+
+#login{
+    text-align: center;
+}
+
+/************** Login **************/
+
+#disconnect{
+    margin-left: 256px;
+}
+
+#confirmationPos{
+    background-color: #f1277200;
+    height: fit-content;
+    width: fit-content;
+    text-align: center;
+    color: #32507c;
+    font-family: 'texta-boldit';
+    padding: 0 auto;
+    /* padding: 50px; */
+    border: none;
+    z-index: 2;
+
+}

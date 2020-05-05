@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header>
+        <h1 class="titrePage" align="center">Devis appli</h1>
+    </header>
+    <div class="container">
+
+
+        <div class="col" id="filDariane">
+
+
+        </div>
+        
+        
+        <div class="questions col">
+            <div class="textBox " id="Plate-forme">
+                <p>Veuillez choisir le type de plate-forme :</p>
+            </div>
+
+
+            <div class="checkBox" id="Type">
+                <p>Veuillez sélectionner un ou plusieurs type(s):</p>
+            </div>
+
+
+            <div class="textBox" id="Diffusion">
+            </div>
+
+
+            <div class="textBox" id="Globalement">
+                <p>Veuillez choisir la technicité de l'application:</p>
+            </div>
+
+
+            <div class="textBox" id="Modèle_économique">
+                <p>Veuillez choisir le modèle économique:</p>
+            </div>
+
+
+            <div class="textBox" id="Connexion">
+                <p>Veuillez choisir le type de connexion:</p>
+            </div>
+
+            <div class="textBox" id="Profils">
+                <p>Veuillez choisir le type de profils:</p>
+            </div>
+
+            <div class="textBox" id="Nombre_types_utilisateurs">
+                <p>Veuillez choisir le nombre type d'utilisateurs (ex. les acheteteurs, les vendeurs = 2) :</p>
+            </div>
+
+
+            <div class="textBox" id="Nombre_écrans">
+                <p>Veuillez choisir le nombre d'écrans:</p>
+            </div>
+
+
+            <div class="textBox" id="Design">
+                <p>Veuillez choisir le type de design:</p>
+            </div>
+
+
+            <div class="checkBox2" id="Fonctionnalités">
+                <p>Veuillez sélectionner les différentes fonctionnalités:</p>
+            </div>
+
+            <div class="textBox" id="Connexion_à_webservice">
+                <p>Indiquer le nombre de connexion à webservice:</p>
+            </div>
+            </br>
+
+            <div class="" id="auTotal">
+                <h1 id="titleTotal">
+                    <p>Total en cours: <span class="number" id="total">0</span></p>
+                </h1>
+
+                <div id="new">
+
+
+                    <button class="btn outline-dark" type="button" id="annulerTerminer"><span class="glyphicon glyphicon-arrow-left"></span> Retour</button>
+
+                </div>
+
+                <p class="tranche" id="tranche1">
+                    2 500 et 5 000 € </br>
+                    Le projet est une application simple, avec peu d'écrans, pouvant être utile à un usage interne ou pour un événement, ne faisant pas appel à des fonctionnalités élaborées. L'application est peut-être réalisable en web-app.
+                </p>
+
+                <p class="tranche" id="tranche2">
+                    Entre 5 000 et 10 000 € </br>
+                    Le projet est une application mobile nécessitant un peu de travail de conception (beaucoup d'écrans ou recherche d'un design poussé) mais ne présente que des fonctionnalités légères.
+                </p>
+
+                <p class="tranche" id="tranche3">
+                    Entre 10 000 et 50 000 € </br>
+                    Le projet de l'application comporte un certain nombre de fonctionnalités et de détails. L'écriture d'un cahier des charges est absolument incontournable, afin de bien déterminer les contours de l'application. Il est conseillé de développer ce type d'application
+                    en mode Agile.
+                </p>
+
+                <p class="tranche" id="tranche4">
+                    Entre 50 000 et 120 000 € </br>
+                    Le projet est une application importante, comportant beaucoup de fonctionnalités et d'écrans. Au-delà de la conception, cette application nécessitera certainement un budget d'infrastructure et de maintenance. Pour développer ce type de projet, il est
+                    importat de travailler en mode Agile.
+                </p>
+
+                <div id="newDevisBtn">
+                    <button id="newDevis" type="button" class="btn outline-dark">Nouveau devis <span class="glyphicon glyphicon-file"></span></button>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div id="test"></div>
+
+
+        
+        
+
+    </div>
+</body>
+
+</html>
+
+
+<script>
+    $(document).ready(function() {
+
+        tarifs = {
+            "Plate-forme": {
+                "type": "radio",
+                "inputs": {
+                    "IOS": 600,
+                    "Android": 1000,
+                    "IOS et Android": 2000
+                }
+
+            },
+            "Type": {
+                "type": "checkbox",
+                "inputs": {
+                    "E-commerce": 15000,
+                    "Market-place": 10000,
+                    "Réseaux sociaux": 10000,
+                    "Utilitaires métier": 1500,
+                    "Autre type": 600,
+                }
+
+            },
+            "Diffusion": {
+                "type": "radio",
+                "inputs": {
+                    "Pas de diffusion": 0,
+                    "Stores": 1500,
+                    "Privée": 600
+                }
+
+            },
+            "Globalement": {
+                "type": "radio",
+                "inputs": {
+                    "Simple": 0,
+                    "Complexe": 600,
+                    "Très complexe": 2000
+                }
+
+            },
+            "Modèle_économique": {
+                "type": "checkbox",
+                'inputs': {
+                    "Gratuite": 0,
+                    "Payante": 600,
+                    "Achats in App": 2000,
+                    "Publicité": 2000
+                }
+
+            },
+            "Connexion": {
+                "type": "checkbox",
+                "inputs": {
+                    "Pas de compte": 0,
+                    "Compte via email": 300,
+                    "Compte via FB connect": 600,
+                    "Autre connexion": 1200
+                }
+
+            },
+            "Profils": {
+                "type": "radio",
+                "inputs": {
+                    "Pas de profils": 0,
+                    "Profil utilisateurs": 1500
+                }
+
+
+            },
+            "Nombre_types_utilisateurs": {
+                "type": "radio",
+                "inputs": {
+                    "utilisateur(s)": 4000,
+
+                }
+
+            },
+            "Nombre_écrans": {
+                "type": "radio",
+                "inputs": {
+                    "inférieur à 5 écrans": 0,
+                    "entre 6 et 10 écrans ": 1200,
+                    "supérieur à 10 écrans": 3000
+                }
+
+            },
+            "Design": {
+                "type": "radio",
+                "inputs": {
+                    "Design simple": 300,
+                    "Design recherché": 1600
+                }
+
+            },
+            "Fonctionnalités": {
+                "type": "checkbox",
+                "inputs": {
+                    "Back-office pour administration": 4000,
+                    "Multilingue": 3000,
+                    "Mode offline": 3500,
+                    "Moteur de recherche, filtres": 600,
+                    "Messagerie interne; chat": 3000,
+                    "Utilisation de l'appareil photo": 1000,
+                    "Réalité augmentée": 6000,
+                    "services externes: google map, FB, ... ": 1000,
+                    "Calendrier": 300,
+                    "Géoloc de l'utilisateur": 2500,
+                    "Géoloc de points statiques sur une map": 1000,
+                    "Notification": 2000,
+                }
+            },
+
+            "Connexion_à_webservice": {
+                "type": "radio",
+                "inputs": {
+                    "Connexion à webservice": 4000
+                }
+
+            }
+
+
+        };
+
+
+
+        var html = '';
+        var filDariane = '';
+        //var recapitulatif = '';
+
+
+        filDariane += '<ul class="filDariane" >';
+        $.each(tarifs, function(index) {
+
+            filDariane += '<li class="titre" id="' + index + 'stepbar" >' + index + '</li>';
+
+
+        });
+        filDariane += '</ul>';
+        $('#filDariane').html(filDariane);
+
+
+        $.each(tarifs, function(index, value) {
+
+            if (index == "Fonctionnalités") {
+                html += '<h1>' + index + ' :' + '</h1>';
+                var cpt = 0;
+                html += $('#' + index).html();
+
+
+                $.each(value, function(index2, value2) {
+
+                    if (index2 == "inputs") {
+                        $.each(value2, function(index3, value3) {
+
+                            cpt++;
+
+                            html += '<label for="' + index + '-' + cpt + '">' + index3 + ': ' + value3 + '</label>';
+                            html += '<input class="checkBoxFonctionnalités" id="' + index + '-' + cpt + '" type="checkbox" name="' + index + '-' + cpt + '"  value="' + value3 + '"></br>';
+
+
+                        });
+
+                    }
+
+                });
+                html += '<br><button class="btn outline-dark" type="button" id="annuler' + index + '"><span class="glyphicon glyphicon-arrow-left"></span> Retour</button>';
+                html += '&nbsp&nbsp<button class="btn outline-dark" type="button" id="btn-' + index + '" >Continuer <span class="glyphicon glyphicon-arrow-right"></span></button>';
+
+
+                $('#' + index).html(html);
+
+                html = '';
+
+
+            }
+
+            else if (index == "Type") {
+                html += '<h1>' + index + ' :' + '</h1>';
+                var cpt = 0;
+                html += $('#' + index).html();
+
+
+                $.each(value, function(index2, value2) {
+
+                    if (index2 == "inputs") {
+                        $.each(value2, function(index3, value3) {
+
+                            cpt++;
+
+                            html += '<label for="' + index + '-' + cpt + '">' + index3 + ': ' + value3 + '</label>';
+                            html += '<input class="checkBoxType" id="' + index + '-' + cpt + '" type="checkbox" name="' + index + '-' + cpt + '"  value="' + value3 + '"></br>';
+
+
+                        });
+
+                    }
+
+                });
+                html += '<br><button class="btn outline-dark" type="button" id="annuler' + index + '"><span class="glyphicon glyphicon-arrow-left"></span> Retour</button>';
+                html += '&nbsp&nbsp<button class="btn outline-dark" type="button" id="btn-' + index + '">Continuer <span class="glyphicon glyphicon-arrow-right"></span></button>';
+
+                $('#' + index).html(html);
+
+                html = '';
+
+
+            }
+
+            else if (index == "Modèle_économique") {
+
+
+                html += '<h1 class="titre">' + index + ' :' + '</h1>';
+                var cpt = 0;
+                html += $('#' + index).html();
+
+
+                $.each(value, function(index2, value2) {
+
+                    if (index2 == "inputs") {
+                        $.each(value2, function(index3, value3) {
+
+                            cpt++;
+
+                            html += '<label for="' + index + '-' + cpt + '">' + index3 + ': ' + value3 + '</label>';
+                            html += '<input class="checkBoxModèle_économique" id="' + index + '-' + cpt + '" type="checkbox" name="' + index + '-' + cpt + '"  value="' + value3 + '"></br>';
+
+                        });
+                    }
+                });
+                html += '<br><button class="btn outline-dark" type="button" id="annuler' + index + '"><span class="glyphicon glyphicon-arrow-left"></span> Retour</button>';
+                html += '&nbsp&nbsp<button class="btn outline-dark" type="button" id="btn-' + index + '">Continuer <span class="glyphicon glyphicon-arrow-right"></span></button>';
+
+
+                $('#' + index).html(html);
+
+                html = '';
+
+
+            }
+
+            else if (index == "Nombre_types_utilisateurs") {
+                html += '<h1 class="titre">' + index + ' :' + '</h1>';
+                html += $('#' + index).html();
+                $.each(value, function(index2, value2) {
+
+                    if (index2 == "inputs") {
+                        $.each(value2, function(index3, value3) {
+
+                            html += '<p id="testUser"><span class="number" id="nb">0</span> utilisateur(s) x 4 000</p><label id="nombreU" for="prixUser">' + index3 + ' : ' + value3 + '</label>';
+                            html += '<input  type="hidden" id="prixUser" name="' + index + '"  value="' + value3 + '"></br>';
+                            html += '<input class="inputNb" type="number" id="nbUser" name="" min="0" max="10" value="0"></br>';
+
+                        });
+                    }
+
+                });
+
+
+                html += '<br/><button class="btn outline-dark" type="button" id="annuler' + index + '"><span class="glyphicon glyphicon-arrow-left"></span> Retour</button>';
+                html += '&nbsp&nbsp<button class="btn outline-dark" type="button" id="btn-' + index + '">Continuer <span class="glyphicon glyphicon-arrow-right"></span></button>';
+
+
+                $('#' + index).html(html);
+
+                html = '';
+
+
+            }
+
+            else if (index == "Connexion_à_webservice") {
+                html += '<h1 class="titre">' + index + ' :' + '</h1>';
+                html += $('#' + index).html();
+                $.each(value, function(index2, value2) {
+
+                    if (index2 == "inputs") {
+                        $.each(value2, function(index3, value3) {
+
+                            html += '<p><span class="number" id="nCo">0</span> Connexion(s) à webservice x 4 000</p><label id="nombreCo" for="nbCo">' + index3 + ' : ' + value3 + '</label>';
+                            html += '<input type="hidden" id="nbCo" name="' + index + '"  value="' + value3 + '"></br>';
+                            html += '<input class="inputNb" type="number" id="nbConnexion" name="" min="0" max="10" value="0"></br>';
+
+                        });
+                    }
+
+                });
+
+
+                html += '<br><button class="btn outline-dark" type="button" id="annuler' + index + '"><span class="glyphicon glyphicon-arrow-left"></span> Retour</button>';
+                html += '&nbsp&nbsp<button class="btn outline-dark" type="button" id="btn-' + index + '">Terminer <span class="glyphicon glyphicon-arrow-right"></span></button>';
+
+
+                $('#' + index).html(html);
+
+                html = '';
+
+
+            }
+
+            else if (index == "Connexion") {
+                html += '<h1>' + index + ' :' + '</h1>';
+                var cpt = 0;
+                html += $('#' + index).html();
+
+
+                $.each(value, function(index2, value2) {
+
+                    if (index2 == "inputs") {
+                        $.each(value2, function(index3, value3) {
+
+                            cpt++;
+
+                            html += '<label for="' + index + '-' + cpt + '">' + index3 + ': ' + value3 + '</label>';
+                            html += '<input class="checkBoxConnexion" id="' + index + '-' + cpt + '" type="checkbox" name="' + index + '-' + cpt + '"  value="' + value3 + '"></br>';
+
+
+                        });
+
+                    }
+
+                });
+                html += '<br><button class="btn outline-dark" type="button" id="annuler' + index + '"><span class="glyphicon glyphicon-arrow-left"></span> Retour</button>';
+                html += '&nbsp&nbsp<button class="btn outline-dark" type="button" id="btn-' + index + '">Continuer <span class="glyphicon glyphicon-arrow-right"></span></button>';
+
+
+                $('#' + index).html(html);
+
+                html = '';
+
+
+            }
+
+            else {
+                    var cpt = 0;
+                html += '<h1 class="titre">' + index + ' :' + '</h1>';
+                html += $('#' + index).html();
+                $.each(value, function(index2, value2) {
+
+                    if (index2 == "inputs") {
+                        $.each(value2, function(index3, value3) {
+                                cpt++;
+                            html += '<label for="' + index + '-' + cpt +  '">' + index3 + ' : ' + value3 + '</label>';
+                            html += '<input id="' + index +'-' + cpt + '" type="radio" name="' + index + '"  value="' + value3 + '"></br>';
+
+
+                        });
+                    }
+
+                });
+
+
+                html += '<br><button class="btn outline-dark" type="button" id="annuler' + index + '"><span class="glyphicon glyphicon-arrow-left"></span> Retour</button>';
+                html += '&nbsp&nbsp<button class="btn outline-dark" type="button" id="btn-' + index + '">Continuer <span class="glyphicon glyphicon-arrow-right"></span></button>';
+
+
+                $('#' + index).html(html);
+
+                html = '';
+
+
+            }
+
+        });
+
+
+
+        function hideAll() {
+            $.each(tarifs, function(index) {
+                $('#' + index).hide();
+
+            });
+
+            $('#new').hide();
+            $('#nombreU').hide();
+            $('#nombreCo').hide();
+            $('#auTotal').hide();
+            $('.tranche').hide();
+            $('#newDevisBtn').hide();
+
+        }
+
+
+        $('#nb').text($('#nbUser').val());
+        $('#nbUser').on('input', function() {
+            $('#nb').text($('#nbUser').val());
+        });
+
+        $('#nCo').text($('#nbConnexion').val());
+        $('#nbConnexion').on('input', function() {
+            $('#nCo').text($('#nbConnexion').val());
+        });
+
+
+        $('.titre').each(function() {
+            var $this = $(this);
+            $this.text($this.text().replace(/_/g, ' '));
+        });
+
+
+        var tabDevis = [];
+        var tabRecap = [];
+
+        var recap = [];
+
+
+        hideAll();
+        $('#Plate-forme').slideDown("slow");
+        $('#Plate-formestepbar').css('color', 'white');
+        $('#Plate-formestepbar').css('border', '1px solid #EC1065');
+        $('#Plate-formestepbar').css('background-color', '#EC1065');
+        $('#Plate-formestepbar').css('padding', ' 3px 8px');
+        $('#Plate-formestepbar').fadeOut(1).fadeIn(900);
+        $('#annulerPlate-forme').hide();
+        $('#img').fadeOut(1).fadeIn(900);
+
+
+
+        $('#annulerType').on("click", function() {
+            tabDevis.pop();
+            tabRecap[0] = [];
+            $('#Type').hide();
+            $('#Plate-forme').slideDown("slow");
+            $('#Typestepbar').css('color', 'white');
+            $('#Typestepbar').css('background-color', '');
+            $('#Typestepbar').css('border', '');
+            $('#Typestepbar').css('padding', ' 3px 8px');
+            $('#Typestepbar').fadeOut(1).fadeIn(900);
+
+        });
+
+
+        $('#annulerDiffusion').on("click", function() {
+            tabDevis.splice(1, 5);
+            tabRecap[1] = [];
+            $('#Diffusion').hide();
+            $('#Type').slideDown("slow");
+            $('#Diffusionstepbar').css('color', 'white');
+            $('#Diffusionstepbar').css('background-color', '');
+            $('#Diffusionstepbar').css('border', '');
+            $('#Diffusionstepbar').css('padding', ' 3px 8px');
+            $('#Diffusionstepbar').fadeOut(1).fadeIn(900);
+
+        });
+
+        $('#annulerGlobalement').on("click", function() {
+            tabDevis.pop();
+            tabRecap[2] = [];
+            $('#Globalement').hide();
+            $('#Diffusion').slideDown("slow");
+            $('#Globalementstepbar').css('color', 'white');
+            $('#Globalementstepbar').css('background-color', '');
+            $('#Globalementstepbar').css('border', '');
+            $('#Globalementstepbar').css('padding', ' 3px 8px');
+            $('#Globalementstepbar').fadeOut(1).fadeIn(900);
+
+        });
+
+        $('#annulerModèle_économique').on("click", function() {
+            tabDevis.pop();
+            tabRecap[3] = [];
+            $('#Modèle_économique').hide();
+            $('#Globalement').slideDown("slow");
+            $('#Modèle_économiquestepbar').css('color', 'white');
+            $('#Modèle_économiquestepbar').css('background-color', '');
+            $('#Modèle_économiquestepbar').css('border', '');
+            $('#Modèle_économiquestepbar').css('padding', ' 3px 8px');
+            $('#Modèle_économiquestepbar').fadeOut(1).fadeIn(900);
+
+        });
+
+        $('#annulerConnexion').on("click", function() {
+            tabDevis.splice(8, 4);
+            tabRecap[4] = [];
+            $('#Connexion').hide();
+            $('#Modèle_économique').slideDown("slow");
+            $('#Connexionstepbar').css('color', 'white');
+            $('#Connexionstepbar').css('background-color', '');
+            $('#Connexionstepbar').css('border', '');
+            $('#Connexionstepbar').css('padding', ' 3px 8px');
+            $('#Connexionstepbar').fadeOut(1).fadeIn(900);
+
+        });
+
+        $('#annulerProfils').on("click", function() {
+            tabDevis.splice(12, 4);
+            tabRecap[5] = [];
+            $('#Profils').hide();
+            $('#Connexion').slideDown("slow");
+            $('#Profilsstepbar').css('color', 'white');
+            $('#Profilsstepbar').css('background-color', '');
+            $('#Profilsstepbar').css('border', '');
+            $('#Profilsstepbar').css('padding', ' 3px 8px');
+            $('#Profilsstepbar').fadeOut(1).fadeIn(900);
+
+        });
+
+        $('#annulerNombre_types_utilisateurs').on("click", function() {
+            tabDevis.pop();
+            tabRecap[6] = [];
+            $('#Nombre_types_utilisateurs').hide();
+            $('#Profils').slideDown("slow");
+            $('#Nombre_types_utilisateursstepbar').css('color', 'white');
+            $('#Nombre_types_utilisateursstepbar').css('background-color', '');
+            $('#Nombre_types_utilisateursstepbar').css('border', '');
+            $('#Nombre_types_utilisateursstepbar').css('padding', ' 3px 8px');
+            $('#Nombre_types_utilisateursstepbar').fadeOut(1).fadeIn(900);
+
+        });
+
+        $('#annulerNombre_écrans').on("click", function() {
+            tabDevis.pop();
+            tabRecap[7] = [];
+            $('#Nombre_écrans').hide();
+            $('#Nombre_types_utilisateurs').slideDown("slow");
+            $('#Nombre_écransstepbar').css('color', 'white');
+            $('#Nombre_écransstepbar').css('background-color', '');
+            $('#Nombre_écransstepbar').css('border', '');
+            $('#Nombre_écransstepbar').css('padding', ' 3px 8px');
+            $('#Nombre_écransstepbar').fadeOut(1).fadeIn(900);
+
+        });
+
+        $('#annulerDesign').on("click", function() {
+            tabDevis.pop();
+            tabRecap[8] = [];
+            $('#Design').hide();
+            $('#Nombre_écrans').slideDown("slow");
+            $('#Designstepbar').css('color', 'white');
+            $('#Designstepbar').css('background-color', '');
+            $('#Designstepbar').css('border', '');
+            $('#Designstepbar').css('padding', ' 3px 8px');
+            $('#Designstepbar').fadeOut(1).fadeIn(900);
+
+        });
+
+        $('#annulerFonctionnalités').on("click", function() {
+            tabDevis.pop();
+            tabRecap[9] = [];
+            $('#Fonctionnalités').hide();
+            $('#Design').slideDown("slow");
+            $('#Fonctionnalitésstepbar').css('color', 'white');
+            $('#Fonctionnalitésstepbar').css('background-color', '');
+            $('#Fonctionnalitésstepbar').css('border', '');
+            $('#Fonctionnalitésstepbar').css('padding', ' 3px 8px');
+            $('#Fonctionnalitésstepbar').fadeOut(1).fadeIn(900);
+
+        });
+
+        $('#annulerConnexion_à_webservice').on("click", function() {
+            tabDevis.splice(20, 13);
+            tabRecap[10] = [];
+
+            $('#Connexion_à_webservice').hide();
+            $('#Fonctionnalités').slideDown("slow");
+            $('#Connexion_à_webservicestepbar').css('color', 'white');
+            $('#Connexion_à_webservicestepbar').css('background-color', '');
+            $('#Connexion_à_webservicestepbar').css('border', '');
+            $('#Connexion_à_webservicestepbar').css('padding', ' 3px 8px');
+            $('#Connexion_à_webservicestepbar').fadeOut(1).fadeIn(900);
+
+        });
+
+
+        $('#annulerTerminer').on("click", function() {
+            tabDevis.pop();
+            tabRecap[11] = [];
+            $('#Connexion_à_webservice').slideDown("slow");
+            $('#auTotal').hide();
+            $('#new').hide();
+            $('#newDevisBtn').hide();
+            $('.tranche').hide();
+
+        });
+
+
+        $('#newDevis').click(function() {
+            location.reload();
+        });
+
+        function affichage(tabRecap){
+
+            var str = '<ul>';
+            $.each(tabRecap, function( index, value ) {
+
+                $.each(value, function( index2, value2 ) {
+
+                    str += '<li>'+ value2 + '<p class="checkedIco">&nbsp &#10004</p></li>';
+                });
+            });
+
+
+            str += '</ul>';
+            document.getElementById("test").innerHTML = str;
+
+        }
+
+
+        $('.titrePage').animate({left: '250px'});
+
+        $('#btn-Plate-forme').click(function() {
+
+            hideAll();
+            $('#annuler').show();
+            $('#Type').slideDown("slow");
+            $('#auTotal').show();
+            $('#Typestepbar').css('color', 'white');
+            $('#Typestepbar').css('border', '1px solid #EC1065');
+            $('#Typestepbar').css('background-color', '#EC1065');
+            $('#Typestepbar').css('padding', ' 3px 8px');
+            $('#Typestepbar').fadeOut(1).fadeIn(900);
+            $('#img').attr('src',"img/type.jpg").fadeOut(1).fadeIn(900);
+            $('#test').fadeOut(1).fadeIn(900);
+
+
+
+
+            tabRecap[0] = [];
+            $("input[name='Plate-forme']:checked").each(function() {
+                var idPlat = $(this).attr("id");
+
+               tabRecap[0].push($("label[for='"+idPlat+"']").text());
+
+            });
+
+            affichage(tabRecap);
+
+
+            recap.push($("input[type=radio][name=Plate-forme]:checked").val());
+
+            $('#recap').html(recap);
+
+
+            tabDevis.push($("input[type=radio][name=Plate-forme]:checked").val());
+
+            auTotal(tabDevis);
+
+
+        });
+
+
+        $('#btn-Type').click(function() {
+            hideAll();
+            $('#Diffusion').slideDown("slow");
+            $('#auTotal').show();
+            $('#Diffusionstepbar').css('color', 'white');
+            $('#Diffusionstepbar').css('border', '1px solid #EC1065');
+            $('#Diffusionstepbar').css('background-color', '#EC1065');
+            $('#Diffusionstepbar').css('padding', ' 3px 8px');
+            $('#Diffusionstepbar').fadeOut(1).fadeIn(900);
+            $('#img').attr('src',"img/").fadeOut(1).fadeIn(900);
+            $('#test').fadeOut(1).fadeIn(900);
+
+            tabRecap[1] = [];
+            $("input[class= 'checkBoxType']:checked").each(function() {
+                var idPlat = $(this).attr("id");
+
+
+                tabRecap[1].push($("label[for='"+idPlat+"']").text());
+
+
+            });
+
+            affichage(tabRecap);
+
+
+            tabDevis.push($("input[type=checkbox][name=Type-1]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Type-2]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Type-3]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Type-4]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Type-5]:checked").val());
+            auTotal(tabDevis);
+
+        });
+
+        $('#btn-Diffusion').click(function() {
+            hideAll();
+            $('#Globalement').slideDown("slow");
+            $('#auTotal').show();
+            $('#Globalementstepbar').css('color', 'white');
+            $('#Globalementstepbar').css('border', '1px solid #EC1065');
+            $('#Globalementstepbar').css('background-color', '#EC1065');
+            $('#Globalementstepbar').css('padding', ' 3px 8px');
+            $('#Globalementstepbar').fadeOut(1).fadeIn(900);
+            $('#img').attr('src',"img/globalement.jpg").fadeOut(1).fadeIn(900);
+            $('#test').fadeOut(1).fadeIn(900);
+
+
+            tabRecap[2] = [];
+
+
+            $("input[name='Diffusion']:checked").each(function() {
+                var idPlat = $(this).attr("id");
+
+                tabRecap[2].push($("label[for='"+idPlat+"']").text());
+
+            });
+
+
+            affichage(tabRecap);
+
+
+            recap.push($("input[type=radio][name=Plate-forme]:checked").val());
+
+            $('#recap').html(recap);
+
+
+            tabDevis.push($("input[type=radio][name=Diffusion]:checked").val());
+            auTotal(tabDevis);
+
+        });
+
+        $('#btn-Globalement').click(function() {
+            hideAll();
+            $('#Modèle_économique').slideDown("slow");
+            $('#auTotal').show();
+            $('#Modèle_économiquestepbar').css('color', 'white');
+            $('#Modèle_économiquestepbar').css('border', '1px solid #EC1065');
+            $('#Modèle_économiquestepbar').css('background-color', '#EC1065');
+            $('#Modèle_économiquestepbar').css('padding', ' 3px 8px');
+            $('#Modèle_économiquestepbar').fadeOut(1).fadeIn(900);
+            $('#img').attr('src',"img/modeleeco.png").fadeOut(1).fadeIn(900);
+            $('#test').fadeOut(1).fadeIn(900);
+
+
+            tabRecap[3] = [];
+            $("input[name='Globalement']:checked").each(function() {
+                var idPlat = $(this).attr("id");
+
+                tabRecap[3].push($("label[for='"+idPlat+"']").text());
+
+            });
+
+
+            affichage(tabRecap);
+
+            tabDevis.push($("input[type=radio][name=Globalement]:checked").val());
+            auTotal(tabDevis);
+
+        });
+
+        $('#btn-Modèle_économique').click(function() {
+            hideAll();
+            $('#Connexion').slideDown("slow");
+            $('#auTotal').show();
+            $('#Connexionstepbar').css('color', 'white');
+            $('#Connexionstepbar').css('border', '1px solid #EC1065');
+            $('#Connexionstepbar').css('background-color', '#EC1065');
+            $('#Connexionstepbar').css('padding', ' 3px 8px');
+            $('#Connexionstepbar').fadeOut(1).fadeIn(900);
+            $('#img').attr('src',"img/mail.png").fadeOut(1).fadeIn(900);
+            $('#test').fadeOut(1).fadeIn(900);
+
+
+
+            tabRecap[4] = [];
+            $("input[class='checkBoxModèle_économique']:checked").each(function() {
+                var idPlat = $(this).attr("id");
+
+                tabRecap[4].push($("label[for='"+idPlat+"']").text());
+
+            });
+
+
+            affichage(tabRecap);
+
+            tabDevis.push($("input[type=checkbox][name=Modèle_économique-1]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Modèle_économique-2]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Modèle_économique-3]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Modèle_économique-4]:checked").val());
+            auTotal(tabDevis);
+
+        });
+
+        $('#btn-Connexion').click(function() {
+            hideAll();
+            $('#Profils').slideDown("slow");
+            $('#auTotal').show();
+            $('#Profilsstepbar').css('color', 'white');
+            $('#Profilsstepbar').css('border', '1px solid #EC1065');
+            $('#Profilsstepbar').css('background-color', '#EC1065');
+            $('#Profilsstepbar').css('padding', ' 3px 8px');
+            $('#Profilsstepbar').fadeOut(1).fadeIn(900);
+            $('#test').fadeOut(1).fadeIn(900);
+
+
+
+            tabRecap[5] = [];
+            $("input[class='checkBoxConnexion']:checked").each(function() {
+                var idPlat = $(this).attr("id");
+
+                tabRecap[5].push($("label[for='"+idPlat+"']").text());
+
+            });
+
+            affichage(tabRecap);
+
+
+            tabDevis.push($("input[type=checkbox][name=Connexion-1]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Connexion-2]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Connexion-3]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Connexion-4]:checked").val());
+            auTotal(tabDevis);
+
+        });
+
+        $('#btn-Profils').click(function() {
+            hideAll();
+            $('#Nombre_types_utilisateurs').slideDown("slow");
+            $('#auTotal').show();
+            $('#Nombre_types_utilisateursstepbar').css('color', 'white');
+            $('#Nombre_types_utilisateursstepbar').css('border', '1px solid #EC1065');
+            $('#Nombre_types_utilisateursstepbar').css('background-color', '#EC1065');
+            $('#Nombre_types_utilisateursstepbar').css('padding', ' 3px 8px');
+            $('#Nombre_types_utilisateursstepbar').fadeOut(1).fadeIn(900);
+            $('#img').attr('src',"img/user.png").fadeOut(1).fadeIn(900);
+            $('#test').fadeOut(1).fadeIn(900);
+
+
+
+            tabRecap[6] = [];
+            $("input[name='Profils']:checked").each(function() {
+                var idPlat = $(this).attr("id");
+
+                tabRecap[6].push($("label[for='"+idPlat+"']").text());
+
+            });
+
+
+            affichage(tabRecap);
+
+            tabDevis.push($("input[type=radio][name=Profils]:checked").val());
+            auTotal(tabDevis);
+
+        });
+
+        $('#btn-Nombre_types_utilisateurs').click(function() {
+            hideAll();
+            $('#Nombre_écrans').slideDown("slow");
+            $('#auTotal').show();
+            $('#Nombre_écransstepbar').css('color', 'white');
+            $('#Nombre_écransstepbar').css('border', '1px solid #EC1065');
+            $('#Nombre_écransstepbar').css('background-color', '#EC1065');
+            $('#Nombre_écransstepbar').css('padding', ' 3px 8px');
+            $('#Nombre_écransstepbar').fadeOut(1).fadeIn(900);
+            $('#img').attr('src',"img/ecran.jpg").fadeOut(1).fadeIn(900);
+            $('#test').fadeOut(1).fadeIn(900);
+
+            tabRecap[7] = [];
+            var user =  $('input#nbUser').val() + " utilisateur(s)" + ' x ' + $(':hidden#prixUser').val();
+
+            tabRecap[7].push(user);
+
+
+            affichage(tabRecap);
+
+
+            var a = $('#prixUser').val();
+            var b = $('#nbUser').val();
+            var resultatPrixUser = a * b;
+
+            tabDevis.push(resultatPrixUser);
+
+
+            auTotal(tabDevis);
+
+        });
+
+        $('#btn-Nombre_écrans').click(function() {
+            hideAll();
+            $('#Design').slideDown("slow");
+            $('#auTotal').show();
+            $('#Designstepbar').css('color', 'white');
+            $('#Designstepbar').css('border', '1px solid #EC1065');
+            $('#Designstepbar').css('background-color', '#EC1065');
+            $('#Designstepbar').css('padding', ' 3px 8px');
+            $('#Designstepbar').fadeOut(1).fadeIn(900);
+            $('#test').fadeOut(1).fadeIn(900);
+
+
+            tabRecap[8] = [];
+            $("input[name='Nombre_écrans']:checked").each(function() {
+                var idPlat = $(this).attr("id");
+
+                tabRecap[8].push($("label[for='"+idPlat+"']").text());
+
+
+            });
+
+            affichage(tabRecap);
+
+            tabDevis.push($("input[type=radio][name=Nombre_écrans]:checked").val());
+            auTotal(tabDevis);
+
+        });
+
+        $('#btn-Design').click(function() {
+            hideAll();
+            $('#Fonctionnalités').slideDown("slow");
+            $('#auTotal').show();
+            $('#Fonctionnalitésstepbar').css('color', 'white');
+            $('#Fonctionnalitésstepbar').css('border', '1px solid #EC1065');
+            $('#Fonctionnalitésstepbar').css('background-color', '#EC1065');
+            $('#Fonctionnalitésstepbar').css('padding', ' 3px 8px');
+            $('#Fonctionnalitésstepbar').fadeOut(1).fadeIn(900);
+            $('#img').attr('src',"img/fonctionnalite.png").fadeOut(1).fadeIn(900);
+            $('#test').fadeOut(1).fadeIn(900);
+
+
+            tabRecap[9] = [];
+            $("input[name='Design']:checked").each(function() {
+                var idPlat = $(this).attr("id");
+
+                tabRecap[9].push($("label[for='"+idPlat+"']").text());
+
+
+            });
+
+            affichage(tabRecap);
+
+            tabDevis.push($("input[type=radio][name=Design]:checked").val());
+            auTotal(tabDevis);
+
+        });
+
+        $('#btn-Fonctionnalités').click(function() {
+            hideAll();
+            $('#Connexion_à_webservice').slideDown("slow");
+            $('#auTotal').show();
+            $('#Connexion_à_webservicestepbar').css('color', 'white');
+            $('#Connexion_à_webservicestepbar').css('border', '1px solid #EC1065');
+            $('#Connexion_à_webservicestepbar').css('background-color', '#EC1065');
+            $('#Connexion_à_webservicestepbar').css('padding', ' 3px 8px');
+            $('#Connexion_à_webservicestepbar').fadeOut(1).fadeIn(900);
+            $('#img').attr('src',"img/connexion.jpg").fadeOut(1).fadeIn(900);
+            $('#test').fadeOut(1).fadeIn(900);
+
+
+
+            tabRecap[10] = [];
+            $("input[class='checkBoxFonctionnalités']:checked").each(function() {
+                var idPlat = $(this).attr("id");
+
+                tabRecap[10].push($("label[for='"+idPlat+"']").text());
+
+
+            });
+
+
+            affichage(tabRecap);
+
+
+            tabDevis.push($("input[type=checkbox][name=Fonctionnalités-1]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Fonctionnalités-2]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Fonctionnalités-3]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Fonctionnalités-4]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Fonctionnalités-5]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Fonctionnalités-6]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Fonctionnalités-7]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Fonctionnalités-8]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Fonctionnalités-9]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Fonctionnalités-10]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Fonctionnalités-11]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Fonctionnalités-12]:checked").val());
+            tabDevis.push($("input[type=checkbox][name=Fonctionnalités-13]:checked").val());
+
+
+
+            auTotal(tabDevis);
+
+        });
+
+
+        $('#btn-Connexion_à_webservice').click(function() {
+            hideAll();
+            $('#auTotal').hide();
+            $('#auTotal').slideDown("slow");
+            $('#new').slideDown("slow");
+            $('#newDevisBtn').show();
+            $('#test').fadeOut(1).fadeIn(900);
+
+
+            tabRecap[11] = [];
+            var cnx =  $('input#nbConnexion').val() + " connexion(s) à webservice" + ' x ' + $(':hidden#nbCo').val();
+
+            tabRecap[11].push(cnx).text;
+
+
+            affichage(tabRecap);
+
+            var a = $('#nbCo').val();
+            var b = $('#nbConnexion').val();
+            var resultatNbConnexion = a * b;
+
+            tabDevis.push(resultatNbConnexion);
+
+
+            auTotal(tabDevis);
+            totTranche(tabDevis);
+
+
+
+            function totTranche(tabDevis) {
+
+                var resultat = 0;
+
+                for (var i = 0; i < tabDevis.length; i++) {
+                    if (tabDevis[i] == undefined) {
+                        tabDevis[i] = 0;
+                    }
+                    resultat += Number(tabDevis[i]);
+                }
+
+                $('#total').html(resultat);
+
+                
+                if (resultat > 2500 && resultat < 5000) {
+                    $('#tranche1').show();
+                } else if (resultat > 5000 && resultat < 10000) {
+                    $('#tranche1').hide();
+                    $('#tranche2').show();
+                } else if (resultat > 10000 && resultat < 50000) {
+                    $('#tranche2').hide();
+                    $('#tranche3').show();
+                } else if (resultat > 50000 && resultat < 120000) {
+                    $('#tranche3').hide();
+                    $('#tranche4').show();
+                }
+
+            }
+
+        });
+
+
+        function auTotal(tabDevis) {
+
+            var resultat = 0;
+
+            for (var i = 0; i < tabDevis.length; i++) {
+                if (tabDevis[i] == undefined) {
+                    tabDevis[i] = 0;
+                }
+                resultat += Number(tabDevis[i]);
+            }
+
+            $('#total').html(resultat);
+
+
+        }
+
+    });
+</script>
