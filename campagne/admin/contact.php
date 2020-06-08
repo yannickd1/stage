@@ -83,15 +83,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //Whether to use SMTP authentication
         $mail->SMTPAuth = true;
 //Username to use for SMTP authentication - use full email address for gmail
-        $mail->Username = "yannickdia31@gmail.com";
+        $mail->Username = "**********";
 //Password to use for SMTP authentication
-        $mail->Password = "amadou31";
+        $mail->Password = "*******";
 //Set who the message is to be sent from
-        $mail->setFrom('yannickdia31@gmail.com', 'Yannick');
+        $mail->setFrom('*************', 'Yannick');
 //Set an alternative reply-to address
 //$mail->addReplyTo('replyto@example.com', 'First Last');
 ////Set who the message is to be sent to
-        $mail->addAddress('yannick_dia@hotmail.com', 'John Doe');
+        $mail->addAddress('***********', 'John Doe');
 //Set the subject line
         $mail->Subject = 'Fiche contact prospect';
 //Read an HTML message body from an external file, convert referenced images to embedded,
